@@ -2,9 +2,10 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 // import './index.css'
 import CounterApp from './CounterApp.jsx'
+import TodoList from "./TodoListApp.jsx"
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <CounterApp />
+    <TodoList />
   </StrictMode>,
 )
