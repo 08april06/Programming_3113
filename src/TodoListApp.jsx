@@ -11,9 +11,16 @@ class Todo {
         this.isCompleted = false;
     }
 }
-
+const TODOS_STORAGE_KEY = "todos";
 function TodoListApp() {
-    const [todos, setTodos] = useState([]);
+    const initTodos = () => {
+        const savedTodos = localStorage.getItem(TODOS_STORAGE_KEY);
+        return savedTodos ? JSON.parse(savedTodos) : [];
+    }
+    const [todos, setTodos] = useState(initTodos);
+    useState(() => {
+        localStorage.setItem(TODOS_STORAGE_KEY, JSON.stringify(todos))
+    }, [todos])
 
     const addTodo = (text) => setTodos((todos) => [
         ...todos,
@@ -39,7 +46,7 @@ function TodoListApp() {
     const deleteTodo = (id) => {
         setTodos((todos) => todos.filter((todo) => todo.id !== id));
     };
-    
+
     return (
         <div className="todo">
             <TodoHeader />
