@@ -37,7 +37,7 @@ export default function TodoItem({ todo, toggleTodo, deleteTodo, editTodo }) {
                     // enter 치면 handleEditText() 실행하기
                     onKeyDown={(e) => {
                         if (e.key == 'Enter') {
-                            handelEditText
+                            handelEditText();
                         }
                     }}
                     autoFocus
